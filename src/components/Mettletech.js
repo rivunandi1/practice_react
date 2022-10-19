@@ -8,32 +8,32 @@ function Mettletech() {
 
     const [popular, setPopular] = useState([]);
     useEffect(() => {
-        Viewdata();
+        Viewdata(1);
     }, []);
 
-var button_value = 1
-    const handleChange1 = () => {
-        button_value = document.getElementById("a").value
-        Viewdata()
+// var button_value = 1
+    const handleChange1 = (x) => {
+        // button_value = document.getElementById("a").value
+        Viewdata(x)
     }
-    const handleChange2 = () => {
-        button_value = document.getElementById("b").value
-        Viewdata()
-    }
-    const handleChange3 = () => {
-        button_value = document.getElementById("c").value
-        Viewdata()
-    }
+    // const handleChange2 = () => {
+    //     button_value = document.getElementById("b").value
+    //     Viewdata()
+    // }
+    // const handleChange3 = () => {
+    //     button_value = document.getElementById("c").value
+    //     Viewdata()
+    // }
 
-    const Viewdata = async () => {
-        const api = await fetch(`https://randomuser.me/api/?results=${button_value}`)
-        const data = await api.json();
+    const Viewdata = async (x) => {
+        const data= await axios.get(`https://randomuser.me/api/?results=${x}`)
+        // const data = await api.json();
 
         //    console.log(data);
-        console.log("=====>>>>>", data.results)
+        console.log("=====>>>>>", data)
         //    console.log("=====>+++>>"+data.results)
 
-        setPopular(data.results)
+        setPopular(data.data.results)
 
     }
     console.log("======>>>>>>>>>>>>", popular)
@@ -42,9 +42,9 @@ var button_value = 1
             <div id="f1"  >
                 <h3>persons data : </h3>
                 <div>
-                    <input  type= "button" onClick={handleChange1} id="a" value="5"/>
-                    <input  type= "button" onClick={handleChange2} id="b" value="10"/>
-                    <input  type= "button" onClick={handleChange3} id="c" value="15"/>
+                    <input  type= "button" onClick={()=>handleChange1(5)} id="a" value="5"/>
+                    <input  type= "button" onClick={()=>handleChange1(10)} id="b" value="10"/>
+                    <input  type= "button" onClick={()=>handleChange1(15)} id="c" value="15"/>
                 </div>
                 {/* <div style={{textAlign: "center"}}> */}
                     <table border="1" style={{width:"50%"}}>
@@ -53,6 +53,7 @@ var button_value = 1
                             <th>Name</th>
                             <th>Gender</th>
                             <th>Image</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                    <tbody>
@@ -64,6 +65,7 @@ var button_value = 1
                                 <td >{e.id.name}</td>
                                 <td >{e.gender}</td>
                                 <td><img src={e.picture.thumbnail}/></td>
+                                <td><input  type= "button" value="delete"/></td>
                             </tr>
                        
                     );

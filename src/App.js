@@ -34,11 +34,21 @@ import PersonData3 from './components/PersonData3';
 import PersonData4 from './components/PersonData4';
 import CheckFunctionalComponents from './components/CheckFunctionalComponents';
 import Mettletech from './components/Mettletech';
-
+import Todo from './components/Todo';
+import Enterprise from './components/Enterprise';
+import About from './components/About';
+// import Navbar from './components/Navbar';
+import CloneEnterprise from './components/CloneEnterprise';
+import AgGridDemo from './components/AgGridDemo';
 function App() {
   return (
     <div>
-      <Mettletech />
+      {/* <Navbar /> */}
+      {/* <AgGridDemo /> */}
+      <Enterprise />
+      {/* <About />    */}
+      {/* <Todo/> */}
+      {/* <Mettletech /> */}
       {/* <Hookseg1/> */}
       {/* <Hookseg2/> */}
       {/* <InputFocus/> */}
